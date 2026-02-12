@@ -22,21 +22,6 @@ All tasks are developed independently and pushed to this repository as per inter
 
 ---
 
-## 🚀 Completed Level
-
-### Level 2 – Intermediate Projects
-
-### 🔹 Task 1: Basic To-Do Web Application
-
-A dynamic web application that allows users to:
-
-- Add new tasks
-- Mark tasks as completed
-- View pending and completed tasks separately
-- Edit existing tasks
-- Delete tasks
-- (Optional Enhancement) Track date and time of tasks
-
 ### 🛠 Technologies Used
 
 - HTML5
@@ -46,6 +31,4 @@ A dynamic web application that allows users to:
 - Event Handling
 
 ---
-
-## 📂 Project Structure
 
