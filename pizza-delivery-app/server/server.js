@@ -12,6 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
 // Test Route
 app.get("/", (req, res) => {
   res.send("Pizza Delivery API is running...");
