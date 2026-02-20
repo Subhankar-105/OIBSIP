@@ -1,0 +1,28 @@
+{
+  "name": "Test User",
+  "email": "user1@test.com",
+  "password": "123456"
+}
+Response -->
+{
+    "_id": "69971c5e6c50e3e856407b40",
+    "name": "Test User",
+    "email": "user1@test.com",
+    "role": "user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTcxYzVlNmM1MGUzZTg1NjQwN2I0MCIsImlhdCI6MTc3MTUxMDg3OCwiZXhwIjoxNzcyMTE1Njc4fQ.8qJbUgxgle4MF73nIkvxk1CXXyx1_Hvuh9cM40wQ-Cc"
+}
+
+{
+  "name": "Admin User",
+  "email": "admin1@test.com",
+  "password": "123456",
+  "adminSecret": "your_admin_secret"
+}
+Response -->
+{
+    "_id": "69971cfa6c50e3e856407b43",
+    "name": "Admin User",
+    "email": "admin1@test.com",
+    "role": "user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTcxY2ZhNmM1MGUzZTg1NjQwN2I0MyIsImlhdCI6MTc3MTUxMTAzNCwiZXhwIjoxNzcyMTE1ODM0fQ.iAAeg5ASbtcU67LZxstLeG_7OUXNjne6_-7Z4dsaykg"
+}
