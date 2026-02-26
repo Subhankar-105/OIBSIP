@@ -1,28 +1,29 @@
 {
-  "name": "Test User",
-  "email": "user1@test.com",
-  "password": "123456"
+  "name": "Main Admin",
+  "email": "admin@test.com",
+  "password": "123456",
+  "adminSecret": "makeThisSuperSecret123"
 }
-Response -->
+--->
 {
-    "_id": "69971c5e6c50e3e856407b40",
-    "name": "Test User",
-    "email": "user1@test.com",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTcxYzVlNmM1MGUzZTg1NjQwN2I0MCIsImlhdCI6MTc3MTUxMDg3OCwiZXhwIjoxNzcyMTE1Njc4fQ.8qJbUgxgle4MF73nIkvxk1CXXyx1_Hvuh9cM40wQ-Cc"
+    "_id": "699e663b7209b03d90c31f4c",
+    "name": "Main Admin",
+    "email": "admin@test.com",
+    "role": "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2NjNiNzIwOWIwM2Q5MGMzMWY0YyIsImlhdCI6MTc3MTk4ODUzOSwiZXhwIjoxNzcyNTkzMzM5fQ.yd8r7ebnHQt8KLG8sQly8QF5WuskFb1C5W1ibcT4F_8"
 }
 
 {
-  "name": "Admin User",
-  "email": "admin1@test.com",
-  "password": "123456",
-  "adminSecret": "your_admin_secret"
+  "name": "Test User",
+  "email": "user@test.com",
+  "password": "123456"
 }
-Response -->
+--->
 {
-    "_id": "69971cfa6c50e3e856407b43",
-    "name": "Admin User",
-    "email": "admin1@test.com",
+    "_id": "699e668e7209b03d90c31f4f",
+    "name": "Test User",
+    "email": "user@test.com",
     "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTcxY2ZhNmM1MGUzZTg1NjQwN2I0MyIsImlhdCI6MTc3MTUxMTAzNCwiZXhwIjoxNzcyMTE1ODM0fQ.iAAeg5ASbtcU67LZxstLeG_7OUXNjne6_-7Z4dsaykg"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2NjhlNzIwOWIwM2Q5MGMzMWY0ZiIsImlhdCI6MTc3MTk4ODYyMiwiZXhwIjoxNzcyNTkzNDIyfQ.fWk4wYLAliZVCBybqCoxghk-VfqPVlziziAjp5fbKY8"
 }
+
