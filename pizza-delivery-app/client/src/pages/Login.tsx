@@ -20,21 +20,29 @@ const Login = () => {
     }
   }, [user, navigate]);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const res = await API.post("/auth/login", { email, password });
 
-      login(res.data.token, res.data.user);
+      console.log("DATA:", res.data);
 
-      if (res.data.user.role === "admin") {
+      // Backend returns flat structure
+      const { token, ...userData } = res.data;
+
+      // Store in AuthContext
+      login(token, userData);
+
+      // Role-based redirect
+      if (userData.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/user");
       }
-    } catch (error) {
-      alert("Invalid credentials");
+    } catch (error: any) {
+      console.log("ERROR:", error.response?.data);
+      alert(error.response?.data?.message || "Login failed");
     }
   };
 

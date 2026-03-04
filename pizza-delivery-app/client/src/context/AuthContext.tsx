@@ -14,9 +14,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Restore user on refresh
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    try {
+      const storedUser = localStorage.getItem("user");
+
+      if (storedUser && storedUser !== "undefined") {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error("Invalid user in localStorage");
+      localStorage.removeItem("user");
     }
   }, []);
 

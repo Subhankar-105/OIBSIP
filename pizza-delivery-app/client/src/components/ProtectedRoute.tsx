@@ -1,13 +1,13 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import React from "react";
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactElement;
   role?: "admin" | "user";
 }
 
-const ProtectedRoute = ({ children, role }: Props) => {
+const ProtectedRoute = ({ children, role }: Props): React.ReactElement => {
   const { user } = useAuth();
 
   // Not logged in
