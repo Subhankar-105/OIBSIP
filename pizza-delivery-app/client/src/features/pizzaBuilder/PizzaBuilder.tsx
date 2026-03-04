@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
 import { Ingredient } from "../../types/ingredient";
 import { getIngredients } from "../ingredients/ingredientService";
+import { createOrder } from "../orders/orderService";
 import IngredientSelector from "./IngredientSelector";
 import { calculatePrice } from "./priceCalculator";
 
@@ -31,6 +34,31 @@ const PizzaBuilder = () => {
   const selectedIds = [...base, ...sauce, ...cheese, ...veggies, ...meat];
 
   const totalPrice = calculatePrice(ingredients, selectedIds);
+
+  const handleOrder = async () => {
+
+    if (selectedIds.length === 0) {
+      toast.warning("Select ingredients first");
+      return;
+    }
+
+    try {
+
+      await createOrder(selectedIds, totalPrice);
+
+      toast.success("Order placed successfully!");
+
+      setBase([]);
+      setSauce([]);
+      setCheese([]);
+      setVeggies([]);
+      setMeat([]);
+
+    } catch (error) {
+
+      console.error("Order failed", error);
+    }
+  };
 
   return (
     <div className="grid grid-cols-3 gap-6 p-6">
@@ -96,7 +124,10 @@ const PizzaBuilder = () => {
           Total Price: ₹{totalPrice}
         </p>
 
-        <button className="bg-red-600 text-white w-full py-3 rounded hover:bg-red-700">
+        <button 
+          onClick={handleOrder}
+          className="bg-red-600 text-white w-full py-3 rounded hover:bg-red-700"
+        >
           Place Order
         </button>
 
