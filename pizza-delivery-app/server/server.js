@@ -20,6 +20,7 @@ const orderRoutes = require("./routes/orderRoutes");
 app.use("/api/auth", authRoutes);
 app.use("/api/ingredients", ingredientRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/payment", require("./routes/payment"));
 
 // Protected test route
 const { protect } = require("./middleware/authMiddleware");
