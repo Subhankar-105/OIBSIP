@@ -1,12 +1,32 @@
 import { useState } from "react";
 import { addIngredient } from "./ingredientService";
 import { Ingredient } from "../../types/ingredient";
+import { ingredientOptions } from "./ingredientOptions";
 
 const IngredientForm = ({ refresh }: { refresh: () => void }) => {
-  const [name, setName] = useState("");
+
   const [category, setCategory] = useState<Ingredient["category"]>("base");
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
+
+  const handleCategoryChange = (value: Ingredient["category"]) => {
+    setCategory(value);
+    setName("");
+    setPrice(0);
+  };
+
+  const handleNameChange = (value: string) => {
+    setName(value);
+
+    const selected = ingredientOptions[category].find(
+      (item) => item.name === value
+    );
+
+    if (selected) {
+      setPrice(selected.price);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +36,7 @@ const IngredientForm = ({ refresh }: { refresh: () => void }) => {
         name,
         category,
         price,
-        stock
+        stock,
       });
 
       setName("");
@@ -32,25 +52,20 @@ const IngredientForm = ({ refresh }: { refresh: () => void }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow p-4 rounded mb-6"
+      className="bg-white shadow-md rounded-xl p-6 mb-6"
     >
-      <h3 className="text-lg font-bold mb-3">Add Ingredient</h3>
+      <h3 className="text-xl font-semibold text-gray-800 mb-4">
+        Add Ingredient
+      </h3>
 
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-        <input
-          className="border p-2"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-
+        {/* Category */}
         <select
-          className="border p-2"
+          className="border p-2 rounded-lg"
           value={category}
           onChange={(e) =>
-            setCategory(e.target.value as Ingredient["category"])
+            handleCategoryChange(e.target.value as Ingredient["category"])
           }
         >
           <option value="base">Base</option>
@@ -60,30 +75,50 @@ const IngredientForm = ({ refresh }: { refresh: () => void }) => {
           <option value="meat">Meat</option>
         </select>
 
+        {/* Ingredient Name */}
+        <select
+          className="border p-2 rounded-lg"
+          value={name}
+          onChange={(e) => handleNameChange(e.target.value)}
+          required
+        >
+          <option value="">Select Ingredient</option>
+
+          {ingredientOptions[category].map((item) => (
+            <option key={item.name} value={item.name}>
+              {item.name}
+            </option>
+          ))}
+
+        </select>
+
+        {/* Price auto filled */}
         <input
-          className="border p-2"
           type="number"
-          placeholder="Price"
+          className="border p-2 rounded-lg bg-gray-100"
           value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          readOnly
         />
 
+        {/* Stock */}
         <input
-          className="border p-2"
           type="number"
           placeholder="Stock"
+          className="border p-2 rounded-lg"
           value={stock}
           onChange={(e) => setStock(Number(e.target.value))}
+          required
         />
 
       </div>
 
       <button
-        className="mt-3 bg-green-600 text-white px-4 py-2 rounded"
         type="submit"
+        className="mt-4 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg"
       >
         Add Ingredient
       </button>
+
     </form>
   );
 };
