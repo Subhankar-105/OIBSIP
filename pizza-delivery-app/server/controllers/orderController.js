@@ -1,5 +1,6 @@
 const Order = require("../models/Order");
 const Ingredient = require("../models/Ingredient");
+const sendEmail = require("../utils/sendEmail");
 
 // Create Order
 exports.createOrder = async (req, res) => {
@@ -14,6 +15,7 @@ exports.createOrder = async (req, res) => {
     const orderItems = [];
 
     for (let id of ingredients) {
+
       const ingredient = await Ingredient.findById(id);
 
       if (!ingredient) {
@@ -28,17 +30,27 @@ exports.createOrder = async (req, res) => {
 
       orderItems.push({
         ingredient: ingredient._id,
-        quantity: 1,
+        quantity: 1
       });
 
+      // Reduce stock
       ingredient.stock -= 1;
       await ingredient.save();
+
+      // Low Stock Alert
+      if (ingredient.stock < 20) {
+        await sendEmail(
+          "Low Stock Alert",
+          `Ingredient "${ingredient.name}" stock is low. Remaining stock: ${ingredient.stock}`
+        );
+      }
     }
 
     const order = await Order.create({
       user: req.user._id,
       items: orderItems,
       totalPrice,
+      status: "Order Received"
     });
 
     res.status(201).json(order);
