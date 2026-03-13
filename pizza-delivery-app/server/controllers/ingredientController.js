@@ -5,7 +5,20 @@ exports.createIngredient = async (req, res) => {
   try {
     const { name, category, price, stock } = req.body;
 
-    const ingredient = await Ingredient.create({
+    // Check if ingredient already exists
+    let ingredient = await Ingredient.findOne({ name, category });
+
+    if (ingredient) {
+      // Increase stock instead of creating new entry
+      ingredient.stock += stock;
+
+      const updatedIngredient = await ingredient.save();
+
+      return res.json(updatedIngredient);
+    }
+
+    // Create new ingredient
+    ingredient = await Ingredient.create({
       name,
       category,
       price,
@@ -13,6 +26,7 @@ exports.createIngredient = async (req, res) => {
     });
 
     res.status(201).json(ingredient);
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

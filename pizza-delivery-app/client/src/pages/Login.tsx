@@ -15,7 +15,7 @@ const Login = () => {
       if (user.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/user");
+        navigate("/dashboard");
       }
     }
   }, [user, navigate]);
@@ -38,7 +38,7 @@ const Login = () => {
       if (userData.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/user");
+        navigate("/dashboard");
       }
     } catch (error: any) {
       console.log("ERROR:", error.response?.data);
