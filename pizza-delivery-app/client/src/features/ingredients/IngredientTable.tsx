@@ -3,14 +3,6 @@ import { Ingredient } from "../../types/ingredient";
 import { getIngredients, deleteIngredient } from "./ingredientService";
 import IngredientForm from "./IngredientForm";
 
-const categoryStyle: any = {
-  base: "bg-blue-100 text-blue-700",
-  sauce: "bg-red-100 text-red-700",
-  cheese: "bg-yellow-100 text-yellow-700",
-  veggie: "bg-green-100 text-green-700",
-  meat: "bg-purple-100 text-purple-700",
-};
-
 const IngredientTable = () => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
@@ -23,45 +15,38 @@ const IngredientTable = () => {
     }
   };
 
-  const handleDelete = async (id: string) => {
+    const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this ingredient?")) return;
 
     try {
-      await deleteIngredient(id);
-      fetchIngredients();
+        await deleteIngredient(id);
+        fetchIngredients();
     } catch (error) {
-      console.error("Delete failed", error);
+        console.error("Delete failed", error);
     }
-  };
+    };
 
   useEffect(() => {
     fetchIngredients();
   }, []);
 
   return (
-    <div className="mt-8">
+    <div className="mt-6">
 
-      {/* Ingredient Form */}
       <IngredientForm refresh={fetchIngredients} />
 
-      {/* Inventory Card */}
-      <div className="bg-white shadow-md rounded-xl p-6">
+      <h3 className="text-xl font-bold mb-4">Inventory</h3>
 
-        <h3 className="text-xl font-bold text-gray-800 mb-4">
-          Inventory
-        </h3>
-
-        <table className="w-full">
-
-          <thead className="bg-gray-100 text-gray-700">
-            <tr>
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-center">Category</th>
-              <th className="p-3 text-center">Price</th>
-              <th className="p-3 text-center">Stock</th>
-              <th className="p-3 text-center">Actions</th>
-            </tr>
-          </thead>
+      <table className="w-full border">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="p-2 border">Name</th>
+            <th className="p-2 border">Category</th>
+            <th className="p-2 border">Price</th>
+            <th className="p-2 border">Stock</th>
+            <th className="p-2 border">Actions</th>
+          </tr>
+        </thead>
 
           <tbody>
 
