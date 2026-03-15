@@ -1,27 +1,40 @@
+import { FaClock, FaPizzaSlice, FaUsers } from "react-icons/fa";
+
+const ClockIcon = FaClock as any;
+const PizzaIcon = FaPizzaSlice as any;
+const UsersIcon = FaUsers as any;
+
 const Features = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="bg-gray-200 py-16">
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <h2 className="text-2xl font-bold text-center mb-10">
+        Why Choose Us?
+      </h2>
 
-        <div className="p-6 shadow rounded-lg text-center">
-          <h3 className="text-xl font-bold">Custom Pizza Builder</h3>
-          <p className="mt-2 text-gray-600">
-            Select base, sauce, cheese, veggies, and meats.
+      <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto text-center">
+
+        <div>
+          <ClockIcon className="text-red-500 text-3xl mx-auto mb-3" />
+          <h3 className="font-semibold">Fast Delivery</h3>
+          <p className="text-gray-500 text-sm">
+            30 minutes or it's free!
           </p>
         </div>
 
-        <div className="p-6 shadow rounded-lg text-center">
-          <h3 className="text-xl font-bold">Real-time Order Tracking</h3>
-          <p className="mt-2 text-gray-600">
-            Track status from kitchen to delivery.
+        <div>
+          <PizzaIcon className="text-red-500 text-3xl mx-auto mb-3" />
+          <h3 className="font-semibold">Fresh Ingredients</h3>
+          <p className="text-gray-500 text-sm">
+            Only the finest and freshest ingredients
           </p>
         </div>
 
-        <div className="p-6 shadow rounded-lg text-center">
-          <h3 className="text-xl font-bold">Smart Inventory</h3>
-          <p className="mt-2 text-gray-600">
-            Admin inventory automatically updates with orders.
+        <div>
+          <UsersIcon className="text-red-500 text-3xl mx-auto mb-3" />
+          <h3 className="font-semibold">Customer First</h3>
+          <p className="text-gray-500 text-sm">
+            Your satisfaction is our priority
           </p>
         </div>
 

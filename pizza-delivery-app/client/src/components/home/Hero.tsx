@@ -2,26 +2,23 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="bg-yellow-50 py-20">
+    <section className="bg-[#e8e1d8] py-20 text-center">
 
-      <div className="max-w-6xl mx-auto text-center">
+      <h1 className="text-4xl font-bold text-gray-900">
+        Fresh Pizza Delivered to Your Door
+      </h1>
 
-        <h1 className="text-5xl font-bold text-gray-800">
-          Build Your Perfect Pizza
-        </h1>
+      <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+        Customize your perfect pizza and have it delivered hot and fresh
+        in 30 minutes or less!
+      </p>
 
-        <p className="mt-4 text-lg text-gray-600">
-          Choose ingredients, customize flavors, and get your pizza delivered fresh.
-        </p>
-
-        <Link
-          to="/login"
-          className="inline-block mt-6 bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700"
-        >
-          Start Ordering
-        </Link>
-
-      </div>
+      <Link
+        to="/dashboard"
+        className="inline-block mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold"
+      >
+        Order Now
+      </Link>
 
     </section>
   );

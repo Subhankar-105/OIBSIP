@@ -3,6 +3,14 @@ import { Ingredient } from "../../types/ingredient";
 import { getIngredients, deleteIngredient } from "./ingredientService";
 import IngredientForm from "./IngredientForm";
 
+const categoryStyle: any = {
+  base: "bg-blue-100 text-blue-700",
+  sauce: "bg-red-100 text-red-700",
+  cheese: "bg-yellow-100 text-yellow-700",
+  veggie: "bg-green-100 text-green-700",
+  meat: "bg-purple-100 text-purple-700",
+};
+
 const IngredientTable = () => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
@@ -15,38 +23,45 @@ const IngredientTable = () => {
     }
   };
 
-    const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this ingredient?")) return;
 
     try {
-        await deleteIngredient(id);
-        fetchIngredients();
+      await deleteIngredient(id);
+      fetchIngredients();
     } catch (error) {
-        console.error("Delete failed", error);
+      console.error("Delete failed", error);
     }
-    };
+  };
 
   useEffect(() => {
     fetchIngredients();
   }, []);
 
   return (
-    <div className="mt-6">
+    <div className="mt-8">
 
+      {/* Ingredient Form */}
       <IngredientForm refresh={fetchIngredients} />
 
-      <h3 className="text-xl font-bold mb-4">Inventory</h3>
+      {/* Inventory Card */}
+      <div className="bg-white shadow-md rounded-xl p-6">
 
-      <table className="w-full border">
-        <thead className="bg-gray-200">
-          <tr>
-            <th className="p-2 border">Name</th>
-            <th className="p-2 border">Category</th>
-            <th className="p-2 border">Price</th>
-            <th className="p-2 border">Stock</th>
-            <th className="p-2 border">Actions</th>
-          </tr>
-        </thead>
+        <h3 className="text-xl font-bold text-gray-800 mb-4">
+          Inventory
+        </h3>
+
+        <table className="w-full">
+
+          <thead className="bg-gray-100 text-gray-700">
+            <tr>
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-center">Category</th>
+              <th className="p-3 text-center">Price</th>
+              <th className="p-3 text-center">Stock</th>
+              <th className="p-3 text-center">Actions</th>
+            </tr>
+          </thead>
 
           <tbody>
 
@@ -81,24 +96,20 @@ const IngredientTable = () => {
                 </td>
 
                 {/* Low stock highlight */}
-                <td className="p-3 text-center relative font-semibold">
+                <td className="p-3 text-center">
                   <div className="flex justify-center items-center gap-2 font-semibold">
 
-                    <span
-                      className={`${
-                        item.stock < 20 ? "text-red-600 text-lg" : "text-gray-700"
-                      }`}
-                    >
+                    <span className={item.stock < 20 ? "text-red-600" : "text-gray-700"}>
                       {item.stock}
                     </span>
 
                     {item.stock < 20 && (
-                      <span className="absolute left-1/2 translate-x-6 bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs">
+                      <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-[11px]">
                         Low
                       </span>
                     )}
-                  </div>
 
+                  </div>
                 </td>
 
                 <td className="p-3 text-center">

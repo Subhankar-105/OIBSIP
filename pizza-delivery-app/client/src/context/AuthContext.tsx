@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { User } from "../types/user";
 
 interface AuthContextType {
@@ -9,10 +9,9 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Restore user on refresh
   useEffect(() => {
     try {
       const storedUser = localStorage.getItem("user");
@@ -20,7 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (storedUser && storedUser !== "undefined") {
         setUser(JSON.parse(storedUser));
       }
-    } catch (error) {
+    } catch {
       console.error("Invalid user in localStorage");
       localStorage.removeItem("user");
     }
@@ -45,7 +44,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// Custom Hook
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

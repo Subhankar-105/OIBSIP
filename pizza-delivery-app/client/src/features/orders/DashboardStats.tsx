@@ -24,29 +24,36 @@ const DashboardStats = () => {
   const total = orders.length;
   const received = orders.filter(o => o.status === "Order Received").length;
   const kitchen = orders.filter(o => o.status === "In Kitchen").length;
-  const delivered = orders.filter(o => o.status === "Sent to Delivery").length;
+  const delivery = orders.filter(o => o.status === "Sent to Delivery").length;
+  const delivered = orders.filter(o => o.status === "Delivered").length;
 
   return (
-    <div className="grid grid-cols-4 gap-4 mb-6">
 
-      <div className="bg-stone-100 shadow p-4 rounded text-center">
-        <h3 className="text-gray-500">Total Orders</h3>
-        <p className="text-2xl font-bold">{total}</p>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+      <div className="bg-white shadow rounded p-5 border-l-4 border-blue-500">
+        <p className="text-gray-500 text-sm">Total Orders</p>
+        <h2 className="text-2xl font-bold">{total}</h2>
       </div>
 
-      <div className="bg-yellow-100 shadow p-4 rounded text-center">
-        <h3>Order Received</h3>
-        <p className="text-2xl font-bold">{received}</p>
+      <div className="bg-white shadow rounded p-5 border-l-4 border-yellow-500">
+        <p className="text-gray-500 text-sm">Order Received</p>
+        <h2 className="text-2xl font-bold">{received}</h2>
       </div>
 
-      <div className="bg-red-200 shadow p-4 rounded text-center">
-        <h3>In Kitchen</h3>
-        <p className="text-2xl font-bold">{kitchen}</p>
+      <div className="bg-white shadow rounded p-5 border-l-4 border-orange-500">
+        <p className="text-gray-500 text-sm">In Kitchen</p>
+        <h2 className="text-2xl font-bold">{kitchen}</h2>
       </div>
 
-      <div className="bg-lime-200 shadow p-4 rounded text-center">
-        <h3>Delivered</h3>
-        <p className="text-2xl font-bold">{delivered}</p>
+      <div className="bg-white shadow rounded p-5 border-l-4 border-purple-500">
+        <p className="text-gray-500 text-sm">Sent to Delivery</p>
+        <h2 className="text-2xl font-bold">{delivery}</h2>
+      </div>
+
+      <div className="bg-white shadow rounded p-5 border-l-4 border-green-500">
+        <p className="text-gray-500 text-sm">Delivered</p>
+        <h2 className="text-2xl font-bold">{delivered}</h2>
       </div>
 
     </div>
