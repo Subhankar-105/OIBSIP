@@ -84,7 +84,7 @@ const Login = () => {
       <div className="flex items-center gap-3 mb-6">
         <PizzaIcon className="text-red-600 text-4xl" />
         <h1 className="text-3xl font-bold text-red-600">
-          Pizza Delivery
+          PizzaCraft
         </h1>
       </div>
 

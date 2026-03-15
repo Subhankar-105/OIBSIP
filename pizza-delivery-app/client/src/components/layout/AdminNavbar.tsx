@@ -15,7 +15,7 @@ const AdminNavbar = () => {
 
         <div className="flex items-center gap-2 text-lg font-semibold">
           <PizzaIcon />
-          Pizza Delivery
+          PizzaCraft
         </div>
 
         <div className="flex items-center gap-4">

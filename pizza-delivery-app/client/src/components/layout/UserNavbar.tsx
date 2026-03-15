@@ -21,7 +21,7 @@ const UserNavbar = () => {
           onClick={() => navigate("/dashboard")}
           className="flex items-center gap-2 text-xl font-semibold cursor-pointer">
           <PizzaIcon />
-          Pizza Delivery
+          PizzaCraft
         </div>
 
         {/* Right side */}
