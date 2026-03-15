@@ -23,7 +23,17 @@ exports.createOrder = async (req, res) => {
       }
 
       if (ingredient.stock <= 0) {
-        return res.status(400).json({ message: `${ingredient.name} is out of stock` });
+        return res.status(400).json({
+          message: `${ingredient.name} is out of stock! Urgently restock!`
+        });
+      }
+
+      // Low stock alert
+      if (ingredient.stock < 20) {
+        await sendEmail(
+          "Low Stock Alert",
+          `Alert: ${ingredient.name} stock is low! Current stock: ${ingredient.stock}. Please restock soon!`
+        );
       }
 
       totalPrice += ingredient.price;
