@@ -2,26 +2,33 @@ import AdminNavbar from "../components/layout/AdminNavbar";
 import DashboardStats from "../features/orders/DashboardStats";
 import IngredientTable from "../features/ingredients/IngredientTable";
 import OrderTable from "../features/orders/OrderTable";
+import Footer from "../components/layout/Footer";
 
 const AdminDashboard = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="min-h-screen flex flex-col bg-gray-100">
 
       <AdminNavbar />
 
-      <div className="max-w-7xl mx-auto p-6">
+      <main className="flex-grow">
 
-        <h1 className="text-2xl font-bold mb-6">
-          Admin Dashboard
-        </h1>
+        <div className="max-w-7xl mx-auto p-6">
 
-        <DashboardStats />
+          <h1 className="text-2xl font-bold mb-6">
+            Admin Dashboard
+          </h1>
 
-        <IngredientTable />
+          <DashboardStats />
 
-        <OrderTable />
+          <IngredientTable />
 
-      </div>
+          <OrderTable />
+
+        </div>
+
+      </main>
+
+      <Footer />
 
     </div>
   );

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="bg-[#e8e1d8] py-20 text-center">
+    <section className="bg-amber-50 py-20 text-center">
 
       <h1 className="text-4xl font-bold text-gray-900">
         Fresh Pizza Delivered to Your Door

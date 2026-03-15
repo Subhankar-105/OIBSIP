@@ -36,32 +36,17 @@ const PizzaBuilder = () => {
 
   const totalPrice = calculatePrice(ingredients, selectedIds);
 
-  // const handleOrder = async () => {
-
-  //   if (selectedIds.length === 0) {
-  //     toast.warning("Select ingredients first");
-  //     return;
-  //   }
-
-  //   try {
-
-  //     await createOrder(selectedIds, totalPrice);
-
-  //     toast.success("Order placed successfully!");
-
-  //     setBase([]);
-  //     setSauce([]);
-  //     setCheese([]);
-  //     setVeggies([]);
-  //     setMeat([]);
-
-  //   } catch (error) {
-
-  //     console.error("Order failed", error);
-  //   }
-  // };
-
   const handlePayment = async () => {
+
+    if (selectedIds.length === 0) {
+      toast.warning("Please select ingredients first 🍕");
+      return;
+    }
+
+    if (base.length === 0) {
+      toast.warning("Please select a pizza base");
+      return;
+    }
 
     try {
 
@@ -85,6 +70,11 @@ const PizzaBuilder = () => {
 
           toast.success("Payment successful & order placed!");
 
+          setBase([]);
+          setSauce([]);
+          setCheese([]);
+          setVeggies([]);
+          setMeat([]);
         },
 
         theme: {
@@ -97,6 +87,7 @@ const PizzaBuilder = () => {
 
     } catch (error) {
 
+      console.error(error);
       toast.error("Payment failed");
 
     }
@@ -104,12 +95,12 @@ const PizzaBuilder = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
+    <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 px-4 py-6">
 
       {/* LEFT SIDE */}
-      <div className="col-span-2">
+      <div className="lg:col-span-2 space-y-8">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-bold">
           Build Your Pizza 🍕
         </h2>
 
@@ -153,15 +144,37 @@ const PizzaBuilder = () => {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="bg-white shadow p-6 rounded">
+      <div className="bg-white shadow-lg p-6 rounded-xl h-fit sticky top-24">
 
         <h3 className="text-xl font-bold mb-4">
           Order Summary
         </h3>
 
-        <p className="mb-2">
-          Selected Items: {selectedIds.length}
-        </p>
+        <div className="space-y-2 text-sm text-gray-600">
+
+          <p>
+            Base: {base.length > 0 ? base.length : "Not selected"}
+          </p>
+
+          <p>
+            Sauce: {sauce.length > 0 ? sauce.length : "Not selected"}
+          </p>
+
+          <p>
+            Cheese: {cheese.length > 0 ? cheese.length : "Not selected"}
+          </p>
+
+          <p>
+            Veggies: {veggies.length}
+          </p>
+
+          <p>
+            Meat: {meat.length}
+          </p>
+
+        </div>
+
+        <hr className="my-4"/>
 
         <p className="text-lg font-bold mb-4">
           Total Price: ₹{totalPrice}
@@ -169,7 +182,7 @@ const PizzaBuilder = () => {
 
         <button 
           onClick={handlePayment}
-          className="bg-red-600 text-white w-full py-3 rounded hover:bg-red-700"
+          className="bg-red-600 text-white w-full py-3 rounded-lg hover:bg-red-700 font-semibold transition"
         >
           Pay & Place Order
         </button>

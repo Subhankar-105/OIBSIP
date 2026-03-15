@@ -11,12 +11,27 @@ export const addIngredient = async (ingredient: Partial<Ingredient>) => {
   return res.data;
 };
 
-export const updateIngredient = async (id: string, ingredient: Partial<Ingredient>) => {
+export const updateIngredient = async (
+  id: string,
+  ingredient: Partial<Ingredient>
+) => {
   const res = await API.put(`/ingredients/${id}`, ingredient);
   return res.data;
 };
 
 export const deleteIngredient = async (id: string) => {
   const res = await API.delete(`/ingredients/${id}`);
+  return res.data;
+};
+
+/* NEW: Increase stock of existing ingredient */
+export const updateIngredientStock = async (
+  id: string,
+  amount: number
+) => {
+  const res = await API.put(`/ingredients/${id}/stock`, {
+    amount,
+  });
+
   return res.data;
 };

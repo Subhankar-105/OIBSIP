@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserNavbar from "../components/layout/UserNavbar";
-import PizzaBuilder from "../features/pizzaBuilder/PizzaBuilder";
 import PopularPizzas from "../components/home/PopularPizzas";
 import { useAuth } from "../context/AuthContext";
+import Footer from "../components/layout/Footer"
+import LatestOrderTracker from "../features/orders/LatestOrderTracker";
 
 import { FaPizzaSlice } from "react-icons/fa";
 
 const PizzaIcon = FaPizzaSlice as any;
 
 const UserDashboard = () => {
-  const [showBuilder, setShowBuilder] = useState(false);
+
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gradient-to-r from-amber-50 to-red-100 min-h-screen">
 
       <UserNavbar />
 
@@ -54,7 +56,7 @@ const UserDashboard = () => {
           </div>
 
           <button
-            onClick={() => setShowBuilder(true)}
+            onClick={() => navigate("/builder")}
             className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold"
           >
             Start Customizing
@@ -62,14 +64,17 @@ const UserDashboard = () => {
 
         </div>
 
+        {/* Builder CTA */}
+        <div className="mb-10">
+          <LatestOrderTracker />
+        </div>
+        
         <PopularPizzas />
 
-        {showBuilder && (
-          <div className="mt-12">
-            <PizzaBuilder />
-          </div>
-        )}
+      </div>
 
+      <div>
+        <Footer />
       </div>
 
     </div>

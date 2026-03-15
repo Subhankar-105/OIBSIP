@@ -31,9 +31,9 @@ const AdminNavbar = () => {
 
           <button
             onClick={logout}
-            className="bg-black px-3 py-1 rounded text-sm hover:bg-gray-800"
+            className="text-white text-lg hover:opacity-80"
           >
-            Logout
+            <LogoutIcon />
           </button>
 
         </div>

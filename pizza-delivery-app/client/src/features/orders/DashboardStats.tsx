@@ -29,29 +29,29 @@ const DashboardStats = () => {
 
   return (
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
 
-      <div className="bg-white shadow rounded p-5 border-l-4 border-blue-500">
+      <div className="bg-white shadow rounded-xl p-5 border-l-4 border-blue-500">
         <p className="text-gray-500 text-sm">Total Orders</p>
         <h2 className="text-2xl font-bold">{total}</h2>
       </div>
 
-      <div className="bg-white shadow rounded p-5 border-l-4 border-yellow-500">
+      <div className="bg-white shadow rounded-xl p-5 border-l-4 border-yellow-500">
         <p className="text-gray-500 text-sm">Order Received</p>
         <h2 className="text-2xl font-bold">{received}</h2>
       </div>
 
-      <div className="bg-white shadow rounded p-5 border-l-4 border-orange-500">
+      <div className="bg-white shadow rounded-xl p-5 border-l-4 border-orange-500">
         <p className="text-gray-500 text-sm">In Kitchen</p>
         <h2 className="text-2xl font-bold">{kitchen}</h2>
       </div>
 
-      <div className="bg-white shadow rounded p-5 border-l-4 border-purple-500">
+      <div className="bg-white shadow rounded-xl p-5 border-l-4 border-purple-500">
         <p className="text-gray-500 text-sm">Sent to Delivery</p>
         <h2 className="text-2xl font-bold">{delivery}</h2>
       </div>
 
-      <div className="bg-white shadow rounded p-5 border-l-4 border-green-500">
+      <div className="bg-white shadow rounded-xl p-5 border-l-4 border-green-500">
         <p className="text-gray-500 text-sm">Delivered</p>
         <h2 className="text-2xl font-bold">{delivered}</h2>
       </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaPizzaSlice, FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
+import { FaArrowLeft, FaPizzaSlice, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import API from "../api/axios";
+import { toast } from "react-toastify";
 
 const BackIcon = FaArrowLeft as any;
 const PizzaIcon = FaPizzaSlice as any;
 const UserIcon = FaUser as any;
 const MailIcon = FaEnvelope as any;
-const PhoneIcon = FaPhone as any;
 const LockIcon = FaLock as any;
 
 const Register = () => {
@@ -16,7 +16,6 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     password: "",
     confirmPassword: "",
   });
@@ -32,16 +31,16 @@ const Register = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
     try {
       await API.post("/auth/register", formData);
-      alert("Registration successful! Please check your email.");
+      toast.success("Registration successful! Please check your email.");
       navigate("/login");
     } catch (error: any) {
-      alert(error.response?.data?.message || "Registration failed");
+      toast.error(error.response?.data?.message || "Registration failed");
     }
   };
 
@@ -105,22 +104,6 @@ const Register = () => {
             value={formData.email}
             onChange={handleChange}
             required
-          />
-        </div>
-
-        {/* Phone */}
-        <label className="text-sm font-medium">Phone Number</label>
-
-        <div className="flex items-center bg-gray-100 rounded-lg px-3 mb-4">
-          <PhoneIcon className="text-gray-400 mr-2" />
-
-          <input
-            type="text"
-            name="phone"
-            placeholder="+91 XXXX XXX XXX"
-            className="bg-transparent w-full p-3 outline-none"
-            value={formData.phone}
-            onChange={handleChange}
           />
         </div>
 

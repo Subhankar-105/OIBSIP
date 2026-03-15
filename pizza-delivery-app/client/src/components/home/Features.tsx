@@ -6,7 +6,7 @@ const UsersIcon = FaUsers as any;
 
 const Features = () => {
   return (
-    <section className="bg-gray-200 py-16">
+    <section className="bg-amber-50 py-16">
 
       <h2 className="text-2xl font-bold text-center mb-10">
         Why Choose Us?

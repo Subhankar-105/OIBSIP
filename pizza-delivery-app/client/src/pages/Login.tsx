@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaArrowLeft, FaPizzaSlice, FaEnvelope, FaLock } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import API from "../api/axios";
 import { useAuth } from "../context/AuthContext";
@@ -47,7 +48,7 @@ const Login = () => {
       }
     } catch (error: any) {
       console.log("ERROR:", error.response?.data);
-      alert(error.response?.data?.message || "Login failed");
+      toast.error(error.response?.data?.message || "Login failed");
     }
   };
 
@@ -64,7 +65,7 @@ const Login = () => {
 
       navigate("/admin");
     } catch (error: any) {
-      alert("Admin login failed");
+      toast.error("Admin login failed");
     }
   };
 

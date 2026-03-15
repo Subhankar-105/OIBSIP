@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import UserDashboard from "../pages/UserDashboard";
+import PizzaBuilderPage from "../pages/PizzaBuilderPage";
+import UserOrders from "../pages/UserOrders";
 import AdminDashboard from "../pages/AdminDashboard";
 
 import ProtectedRoute from "../components/ProtectedRoute";
@@ -26,6 +28,10 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
+
+      <Route path="/builder" element={<PizzaBuilderPage />} />
+
+      <Route path="/orders" element={<UserOrders />} />
 
       <Route
         path="/admin"

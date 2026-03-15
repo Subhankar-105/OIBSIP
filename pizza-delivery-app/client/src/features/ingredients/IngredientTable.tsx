@@ -96,20 +96,22 @@ const IngredientTable = () => {
                 </td>
 
                 {/* Low stock highlight */}
-                <td className="p-3 text-center">
-                  <div className="flex justify-center items-center gap-2 font-semibold">
+                <td className="p-3 text-center relative font-semibold">
 
-                    <span className={item.stock < 20 ? "text-red-600" : "text-gray-700"}>
-                      {item.stock}
+                  <span
+                    className={`${
+                      item.stock < 20 ? "text-red-600" : "text-gray-700"
+                    }`}
+                  >
+                    {item.stock}
+                  </span>
+
+                  {item.stock < 20 && (
+                    <span className="absolute left-1/2 pt-1 translate-x-6 text-xs text-red-600">
+                    Low
                     </span>
+                  )}
 
-                    {item.stock < 20 && (
-                      <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-[11px]">
-                        Low
-                      </span>
-                    )}
-
-                  </div>
                 </td>
 
                 <td className="p-3 text-center">

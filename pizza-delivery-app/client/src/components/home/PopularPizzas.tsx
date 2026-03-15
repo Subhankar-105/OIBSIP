@@ -7,32 +7,28 @@ const pizzas = [
   {
     name: "Margherita",
     desc: "Fresh mozzarella, tomatoes, basil",
-    price: 299,
     image: pizza1
   },
   {
     name: "Pepperoni",
     desc: "Classic pepperoni & cheese",
-    price: 399,
     image: pizza2
   },
   {
     name: "Veggie Supreme",
     desc: "Fresh vegetables & herbs",
-    price: 349,
     image: pizza3
   },
   {
     name: "BBQ Chicken",
     desc: "BBQ sauce, chicken, onions",
-    price: 449,
     image: pizza4
   }
 ];
 
 const PopularPizzas = () => {
   return (
-    <section className="py-16 bg-[#e8e1d8]">
+    <section className="py-16 bg-amber-50">
 
       <h2 className="text-2xl font-bold text-center mb-10">
         Our Popular Pizzas
@@ -58,10 +54,6 @@ const PopularPizzas = () => {
 
               <p className="text-sm text-gray-500 mt-1">
                 {pizza.desc}
-              </p>
-
-              <p className="text-red-600 font-bold mt-2">
-                ₹{pizza.price}
               </p>
 
             </div>
