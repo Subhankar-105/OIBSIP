@@ -10,14 +10,24 @@ const DashboardStats = () => {
 
   const [orders, setOrders] = useState<Order[]>([]);
 
-  useEffect(() => {
-
-    const fetchOrders = async () => {
+  const fetchOrders = async () => {
+    try {
       const data = await getOrders();
       setOrders(data);
-    };
+    } catch (error) {
+      console.error("Failed to fetch orders", error);
+    }
+  };
 
-    fetchOrders();
+  useEffect(() => {
+
+    fetchOrders(); // initial load
+
+    const interval = setInterval(() => {
+      fetchOrders(); // refresh every 5 seconds
+    }, 5000);
+
+    return () => clearInterval(interval); // cleanup
 
   }, []);
 
@@ -57,6 +67,7 @@ const DashboardStats = () => {
       </div>
 
     </div>
+
   );
 };
 
