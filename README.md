@@ -1,34 +1,49 @@
-# OIBSIP – Oasis Infobyte Internship Projects
+# Pizza Delivery Web Application 🍕
 
-This repository contains the projects completed as part of the **AICTE Oasis Infobyte Web Development and Designing Internship**.
+This project is developed as part of the Oasis Infobyte Web Development and Designing Internship (Level 3 Task).
 
-Intern Name: Subhankar Basak  
-Internship Duration: 1 Month  
-Domain: Web Development and Designing  
+## 🚀 Project Overview
+The Pizza Delivery Application is a full stack web platform where users can create custom pizzas, place orders, and track order status. The system also provides an admin dashboard to manage inventory and orders.
 
----
+## 🛠 Tech Stack
+Frontend: React.js, Tailwind CSS
+Backend: Node.js, Express.js
+Database: MongoDB
+Authentication: JWT
+Payment Integration: Razorpay (Test Mode)
+Email Notification: Nodemailer
 
-## 📌 Internship Overview
+## 👤 User Features
+• User Registration & Login  
+• Browse available pizza options  
+• Create custom pizza (Base, Sauce, Cheese, Veggies)  
+• Razorpay test payment integration  
+• Track order status updates  
 
-During this internship, I worked on real-world web development projects to strengthen my understanding of:
+## 🛠 Admin Features
+• Admin login  
+• Inventory management system  
+• Track orders  
+• Update order status:
+  - Order Received
+  - In Kitchen
+  - Sent to Delivery
 
-- HTML structure and semantic design
-- CSS styling and responsive layouts
-- JavaScript logic and DOM manipulation
-- Interactive UI development
-- Project structuring and GitHub workflow
+• Email alert when stock is below threshold
 
-All tasks are developed independently and pushed to this repository as per internship guidelines.
+## 📦 Project Features
+• Secure authentication system  
+• Custom pizza builder  
+• Inventory management  
+• Order tracking system  
+• Email notification system  
 
----
+## 🎥 Demo Video
+https://drive.google.com/file/d/18cjnU50XvYIEFCwQ4hlb0Dp9dfQ9bc09/view?usp=sharing
 
-### 🛠 Technologies Used
+## 💻 GitHub Repository
+https://github.com/Subhankar-105/OIBSIP
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla JS)
-- DOM Manipulation
-- Event Handling
-
----
-
+## 👨‍💻 Developed By
+Subhankar Basak  
+Web Development Intern – Oasis Infobyte
